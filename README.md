@@ -7,7 +7,9 @@ A PyTorch implementation of ["Everybody Dance Now"](https://arxiv.org/abs/1808.0
 - CUDA       9.0.176
 - PyTorch    0.4.1post2
 
-For other necessary packages, please refer to requirements.txt __(TODO)__
+For other necessary packages, Use `pip install -r requirements` for a quick install.  
+1. The project requires tensorflow>1.9.0 since the pose estimator is implemented in Keras. If you are using an independent Keras package, change the corresponding import command in `./pose_estimator/compute_coordinates_for_video.py`. However, you won't be able to use tensorboard this way.
+2. The project uses imageio for video processing, which requires the ffmpeg core to be downloaded and installed after the pip command. Just follow the error message and you'll get there.
 
 ## Dataset Preparation
 1. To reproduce our results, download the [Afrobeat workout Sequence](https://www.youtube.com/watch?v=kyKNPPQW3bM) from YouTube. ([clipconverter](https://www.clipconverter.cc/) is a great downloading tool.) 
