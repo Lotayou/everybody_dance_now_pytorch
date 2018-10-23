@@ -46,17 +46,21 @@ If you encounter any failcase, do not hesitate to leave an issue to let us know!
 
 ## Testing
 1. Download pretrained checkpoints:
-- Pose2vid generator (TODO: provide updated)
-- Face Enhancement (TODO: provide updated)
+- [Pose2vid generator](https://yadi.sk/d/gpKvisk8uLuUyA): put in `./checkpoints/everybody_dance_now_temporal/`
 
-2. Prepare the testing sequence: Save the skeleton figures in a folder named `test_A`, slice the corresponding pose coordinates from previously cached `poses.npy`, and wrap them in a single folder and put it under `./datasets/`.
+2. Prepare the testing sequence: Save the skeleton figures in a folder named `test_A`, slice the corresponding pose coordinates from previously cached `poses.npy`, and wrap them in a single folder (for example `cardio_dance_test`) and put it under `./datasets/`.
+
+   In addition, the program supports using first ground-truth frame as a reference, so create a new folder `test_B` and put inside the ground truth frame corresponding to the first item in `test_A` (with identical file name of course).
 
 3. Run the following command for global synthesis 
 
-     `sh ./scripts/test_full_512.sh`
+    `sh ./scripts/test_full_512.sh`
+    
+   This will generates a coarse video stored in `./results/$NAME$/$WHICH_EPOCH$/test_clip.avi` and cache all synthesized frames for face_enhancer evaluation.
  
-(TODO: rewrite the `test_video.py` script, merge global synthesis and local face enhancement)
-   
+4. Run the face-enhancer to get the final result.
+
+    `python ./face-enhancer/enhance.py`
 
 ## Training
 #### Step I: Training global pose2vid network.
@@ -70,12 +74,15 @@ If you encounter any failcase, do not hesitate to leave an issue to let us know!
 
    `sh ./scripts/train_flow_512.sh`
     
-    __Warning__: this module will increase memory cost and slows down the training speed by 40% to 50%. Also it's very sensitive to background flow, so use it at your discretion. However, if you can accurately estimate the dancer's body mask, using masked flow could help with temporal smoothing. Please send a PR if you find masked Flowloss effective.
+   __Warning__: this module will increase memory cost and slows down the training speed by 40% to 50%. Also it's very sensitive to background flow, so use it at your discretion. However, if you can accurately estimate the dancer's body mask, using masked flow could help with temporal smoothing. Please send a PR if you find masked Flowloss effective.
 
 #### Step II: Training local face-enhancing network.
 1. Rename your `train_B` folder into `test_real` (Or you can save a copy and rename it)
+
 2. Test the global pose2vid network (either trained from Step I or initialized with downloaded pretrained model) with your `train_A` dataset, save the results into a folder named `test_sync` with matching names.
+
 3. Open the face-enhancement training script at `./face_enhancement/main.py`, modify the `dataset_dir, pose_dir, checkpoint dir, log_dir` variables, and run the script.
+
 4. The default network structure is 2 downsample layers, 6 Resblocks, and 2 upsample layers. You can modify it for best enhancing effect, just change the corresponding parameters at line 22. Also the crop size is adjustable at line 23(default is 96).
 
 ## Citation

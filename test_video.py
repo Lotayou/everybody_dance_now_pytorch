@@ -59,9 +59,3 @@ with get_writer(os.path.join(result_dir, 'test_clip_ref.avi' if opt.use_first_fr
   for im in generated:
       writer.append_data(im)
 writer.close()
-
-
-# visuals = OrderedDict([('input_label', util.tensor2label(data['label'][0], opt.label_nc)),
-#                       ('synthesized_image', util.tensor2im(generated.data[0]))])
-
-
