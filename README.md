@@ -47,6 +47,9 @@ If you encounter any failcase, do not hesitate to leave an issue to let us know!
 ## Testing
 1. Download pretrained checkpoints:
 - [Pose2vid generator](https://yadi.sk/d/gpKvisk8uLuUyA): put in `./checkpoints/everybody_dance_now_temporal/`
+#### Update on 20181204
+- [Face enhancer for Afrobeat sequence](https://yadi.sk/d/U_sRn9dZiV-G0w): put in `./face-enhancer/checkpoints/dance_test_new_down2_res6/`
+- [Pretrained VGG 16 weights](https://yadi.sk/d/uKcv5uxzD40WjA): put in `./face-enhancer/utils/`
 
 2. Prepare the testing sequence: Save the skeleton figures in a folder named `test_A`, slice the corresponding pose coordinates from previously cached `poses.npy`, and wrap them in a single folder (for example `cardio_dance_test`) and put it under `./datasets/`.
 
