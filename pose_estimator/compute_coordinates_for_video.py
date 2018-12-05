@@ -259,7 +259,7 @@ if __name__ == "__main__":
         img = imread(os.path.join(img_dir, item)
         cord = cordinates_from_image_file(img, model=model)
         pose_cords.append(cord)
-        color,_ = draw_pose_from_coords(cord, im_shape)
+        color,_ = draw_pose_from_cords(cord, im_shape)
         imsave(os.path.join(pose_dir, item), color)
     
     np.save(pose_npy_name, np.array(pose_cords, dtype=np.int))
