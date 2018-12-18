@@ -1,5 +1,12 @@
 # Everybody Dance Now (pytorch)
-A PyTorch implementation of ["Everybody Dance Now"](https://arxiv.org/abs/1808.07371) from Berkeley AI lab.
+A PyTorch implementation of ["Everybody Dance Now"](https://arxiv.org/abs/1808.07371) from Berkeley AI lab. 
+Including all functionality except pose normalization. 
+
+Other implementations:
+
+[yanx27](https://github.com/CUHKSZ-TQL/EverybodyDanceNow_reproduce_pytorch) EverybodyDanceNow reproduced in pytorch
+
+[nyoki-pytorch](https://github.com/nyoki-mtl/pytorch-EverybodyDanceNow) pytorch-EverybodyDanceNow
 
 ## Environment
 - Ubuntu     18.04 (But 16.04 should be fine too)
