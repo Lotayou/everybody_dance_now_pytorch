@@ -8,6 +8,8 @@ Other implementations:
 
 [nyoki-pytorch](https://github.com/nyoki-mtl/pytorch-EverybodyDanceNow) pytorch-EverybodyDanceNow
 
+Also check out [densebody_pytorch](https://github.com/Lotayou/densebody_pytorch) for 3D human mesh estimation from monocular images.
+
 ## Environment
 - Ubuntu     18.04 (But 16.04 should be fine too)
 - Python     3.6
